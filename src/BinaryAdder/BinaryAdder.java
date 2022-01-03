@@ -3,7 +3,7 @@ package BinaryAdder;
 public class BinaryAdder {
     Gate gate = new Gate();
 
-    public boolean[] halfadder(boolean bitA, boolean bitB) {
+    public boolean[] halfAdder(boolean bitA, boolean bitB) {
         boolean[] answer = {gate.andGate(bitA, bitB), gate.xorGate(bitA, bitB)};
         return answer;
     }
@@ -17,7 +17,7 @@ public class BinaryAdder {
 //        System.out.println(gate.nandGate(bitA, bitB));
 //        System.out.println(gate.xorGate(bitA, bitB));
         BinaryAdder binaryAdder = new BinaryAdder();
-        boolean[] answer = binaryAdder.halfadder(true, true);
+        boolean[] answer = binaryAdder.halfAdder(true, true);
 
         for (boolean a : answer) {
             System.out.println(a);
