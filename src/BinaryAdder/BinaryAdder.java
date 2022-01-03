@@ -8,19 +8,22 @@ public class BinaryAdder {
         return answer;
     }
 
+    public boolean[] fullAdder(boolean bitA, boolean bitB, boolean carry) {
+        boolean[] h1 = this.halfAdder(bitA, bitB);
+        boolean[] h2 = this.halfAdder(h1[1], carry);
+
+        boolean[] answer = {gate.orGate(h1[0], h2[0]), h2[1]};
+        return answer;
+    }
+
     public static void main(String[] args) {
-//        System.out.println("Hello World adder");
-//        boolean bitA=true, bitB=false;
-//        Gate gate = new Gate();
-//        System.out.println(gate.andGate(bitA, bitB));
-//        System.out.println(gate.orGate(bitA, bitB));
-//        System.out.println(gate.nandGate(bitA, bitB));
-//        System.out.println(gate.xorGate(bitA, bitB));
+
         BinaryAdder binaryAdder = new BinaryAdder();
-        boolean[] answer = binaryAdder.halfAdder(true, true);
+        boolean[] answer = binaryAdder.fullAdder(false, false, true);
 
         for (boolean a : answer) {
             System.out.println(a);
         }
+
     }
 }
