@@ -68,7 +68,9 @@ public class BinaryAdder {
 
         boolean[] answer = binaryAdder.byteAdder(byteA, byteB);
 
-        System.out.println(Arrays.toString(answer));
+        System.out.println("byte A = "+Arrays.toString(byteA));
+        System.out.println("byte B = "+Arrays.toString(byteB));
+        System.out.println("결과 = "+Arrays.toString(answer));
 
     }
 }
