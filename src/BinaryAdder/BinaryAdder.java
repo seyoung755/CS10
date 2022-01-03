@@ -36,17 +36,11 @@ public class BinaryAdder {
 
         if (max_len != min_len) {
             for (int j = min_len; j < max_len; j++) {
-                if (byteA.length > byteB.length) {
-                    boolean bitA = byteA[j], bitB = false;
-                    boolean[] result = this.fullAdder(bitA, bitB, carry);
-                    carry = result[0];
-                    answer.add(result[1]);
-                } else {
-                    boolean bitA = false, bitB = byteB[j];
-                    boolean[] result = this.fullAdder(bitA, bitB, carry);
-                    carry = result[0];
-                    answer.add(result[1]);
-                }
+                boolean bitA = (byteA.length > byteB.length) ? byteA[j] : false;
+                boolean bitB = (byteA.length < byteB.length) ? byteB[j] : false;
+                boolean[] result = this.fullAdder(bitA, bitB, carry);
+                carry = result[0];
+                answer.add(result[1]);
             }
         } else {
             answer.add(carry);
