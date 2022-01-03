@@ -1,5 +1,7 @@
 package BinaryAdder;
 
+import java.util.Arrays;
+
 public class BinaryAdder {
     Gate gate = new Gate();
 
@@ -66,9 +68,7 @@ public class BinaryAdder {
 
         boolean[] answer = binaryAdder.byteAdder(byteA, byteB);
 
-        for (boolean a : answer) {
-            System.out.println(a);
-        }
+        System.out.println(Arrays.toString(answer));
 
     }
 }
