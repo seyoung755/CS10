@@ -1,6 +1,8 @@
 package BinaryAdder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class BinaryAdder {
     Gate gate = new Gate();
@@ -18,24 +20,18 @@ public class BinaryAdder {
         return answer;
     }
 
-    public boolean[] byteAdder(boolean[] byteA, boolean[] byteB) {
+    public Boolean[] byteAdder(boolean[] byteA, boolean[] byteB) {
         int min_len = Math.min(byteA.length, byteB.length);
         int max_len = Math.max(byteA.length, byteB.length);
         boolean carry = false;
 
-        int answer_len = max_len+1;
+        List<Boolean> answer = new ArrayList<Boolean>();
 
-        if (min_len != max_len) {
-            answer_len = max_len;
-        }
-
-        boolean[] answer = new boolean[answer_len];
-
-        for (int i = 0 ; i < min_len ; i++) {
-            boolean bitA=byteA[i], bitB=byteB[i];
+        for (int i = 0; i < min_len; i++) {
+            boolean bitA = byteA[i], bitB = byteB[i];
             boolean[] result = this.fullAdder(bitA, bitB, carry);
             carry = result[0];
-            answer[i] = result[1];
+            answer.add(result[1]);
         }
 
         if (max_len != min_len) {
@@ -44,20 +40,19 @@ public class BinaryAdder {
                     boolean bitA = byteA[j], bitB = false;
                     boolean[] result = this.fullAdder(bitA, bitB, carry);
                     carry = result[0];
-                    answer[j] = result[1];
+                    answer.add(result[1]);
                 } else {
                     boolean bitA = false, bitB = byteB[j];
                     boolean[] result = this.fullAdder(bitA, bitB, carry);
                     carry = result[0];
-                    answer[j] = result[1];
+                    answer.add(result[1]);
                 }
             }
-        } else
-        {
-            answer[max_len] = carry;
+        } else {
+            answer.add(carry);
         }
 
-        return answer;
+        return answer.toArray(new Boolean[answer.size()]);
     }
 
     public static void main(String[] args) {
@@ -66,11 +61,11 @@ public class BinaryAdder {
         boolean[] byteA = {true, true, false, true, true, false, true, false};
         boolean[] byteB = {true, false, true, true, false, false, true, true};
 
-        boolean[] answer = binaryAdder.byteAdder(byteA, byteB);
+        Boolean[] answer = binaryAdder.byteAdder(byteA, byteB);
 
-        System.out.println("byte A = "+Arrays.toString(byteA));
-        System.out.println("byte B = "+Arrays.toString(byteB));
-        System.out.println("결과 = "+Arrays.toString(answer));
+        System.out.println("byte A = " + Arrays.toString(byteA));
+        System.out.println("byte B = " + Arrays.toString(byteB));
+        System.out.println("결과 = " + Arrays.toString(answer));
 
     }
 }

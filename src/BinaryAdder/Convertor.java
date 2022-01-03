@@ -14,8 +14,7 @@ public class Convertor {
             answer.add(b);
             dec /= 2;
         }
-        Boolean[] arr = new Boolean[answer.size()];
-        printBin(decimal, answer.toArray(arr));
+        printBin(decimal, answer.toArray(new Boolean[answer.size()]));
     }
 
     public void bin2dec(boolean[] bin) {
@@ -31,13 +30,13 @@ public class Convertor {
     }
 
     public void printBin(int decimal, Boolean[] answer) {
-        System.out.println("입력 = "+decimal);
-        System.out.println("출력 = "+Arrays.toString(answer));
+        System.out.println("입력 = " + decimal);
+        System.out.println("출력 = " + Arrays.toString(answer));
     }
 
     public void printDec(boolean[] bin, int answer) {
-        System.out.println("입력 = "+Arrays.toString(bin));
-        System.out.println("출력 = "+answer);
+        System.out.println("입력 = " + Arrays.toString(bin));
+        System.out.println("출력 = " + answer);
     }
 
 
