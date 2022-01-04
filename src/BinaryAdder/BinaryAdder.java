@@ -20,31 +20,22 @@ public class BinaryAdder {
         return answer;
     }
 
-    public Boolean[] byteAdder(boolean[] byteA, boolean[] byteB) {
+    public Boolean[] byteAdder(Boolean[] byteA, Boolean[] byteB) {
         int min_len = Math.min(byteA.length, byteB.length);
         int max_len = Math.max(byteA.length, byteB.length);
         boolean carry = false;
 
         List<Boolean> answer = new ArrayList<Boolean>();
 
-        for (int i = 0; i < min_len; i++) {
-            boolean bitA = byteA[i], bitB = byteB[i];
+        for (int i = 0; i < max_len; i++) {
+            boolean bitA = (byteA.length > i) ? byteA[i] : false;
+            boolean bitB = (byteB.length > i) ? byteB[i] : false;
             boolean[] result = this.fullAdder(bitA, bitB, carry);
             carry = result[0];
             answer.add(result[1]);
         }
 
-        if (max_len != min_len) {
-            for (int j = min_len; j < max_len; j++) {
-                boolean bitA = (byteA.length > byteB.length) ? byteA[j] : false;
-                boolean bitB = (byteA.length < byteB.length) ? byteB[j] : false;
-                boolean[] result = this.fullAdder(bitA, bitB, carry);
-                carry = result[0];
-                answer.add(result[1]);
-            }
-        } else {
-            answer.add(carry);
-        }
+        answer.add(carry);
 
         return answer.toArray(new Boolean[answer.size()]);
     }
