@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Convertor {
 
-    public void dec2bin(int decimal) {
+    public Boolean[] dec2bin(int decimal) {
         List<Boolean> answer = new ArrayList<Boolean>();
         int dec = decimal;
         while (dec > 0) {
@@ -14,10 +14,13 @@ public class Convertor {
             answer.add(b);
             dec /= 2;
         }
-        printBin(decimal, answer.toArray(new Boolean[answer.size()]));
+        Boolean[] arrAnswer = answer.toArray(new Boolean[answer.size()]);
+        printBin(decimal, arrAnswer);
+        return arrAnswer;
+
     }
 
-    public void bin2dec(boolean[] bin) {
+    public int bin2dec(boolean[] bin) {
         int i = 1, answer = 0;
         for (boolean b : bin) {
             if (b) {
@@ -27,6 +30,7 @@ public class Convertor {
             i *= 2;
         }
         printDec(bin, answer);
+        return answer;
     }
 
     public void printBin(int decimal, Boolean[] answer) {
@@ -37,15 +41,5 @@ public class Convertor {
     public void printDec(boolean[] bin, int answer) {
         System.out.println("입력 = " + Arrays.toString(bin));
         System.out.println("출력 = " + answer);
-    }
-
-
-    public static void main(String[] args) {
-        Convertor c = new Convertor();
-        int decimal = 256;
-        c.dec2bin(decimal);
-        boolean[] bin = {true, true, true, true, true};
-        c.bin2dec(bin);
-
     }
 }

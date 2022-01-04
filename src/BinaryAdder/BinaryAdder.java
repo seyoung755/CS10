@@ -48,18 +48,4 @@ public class BinaryAdder {
 
         return answer.toArray(new Boolean[answer.size()]);
     }
-
-    public static void main(String[] args) {
-
-        BinaryAdder binaryAdder = new BinaryAdder();
-        boolean[] byteA = {true, true, false, true, true, false, true, false};
-        boolean[] byteB = {true, false, true, true, false, false, true, true};
-
-        Boolean[] answer = binaryAdder.byteAdder(byteA, byteB);
-
-        System.out.println("byte A = " + Arrays.toString(byteA));
-        System.out.println("byte B = " + Arrays.toString(byteB));
-        System.out.println("결과 = " + Arrays.toString(answer));
-
-    }
 }
